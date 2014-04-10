@@ -91,6 +91,12 @@ class BasketController < ApplicationController
     flash[:info] = 'You have been set as admin.'
     redirect_to_basket
   end
+  
+  def unset_admin
+    cookie_delete(:admin, @basket.uid)
+    flash[:info] = 'You are no longer admin.'
+    redirect_to_basket
+  end
 
   def share
     cookie_set(:action, :share_link)
